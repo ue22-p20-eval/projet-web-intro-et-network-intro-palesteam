@@ -1,8 +1,9 @@
 body{
-    background-color: slategray;
+    background-image : lavender;
 }
 
 .flexbox{
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,6 +15,14 @@ body{
     grid-auto-rows: 35px;
     grid-gap: 5px;
     max-width:120px;
+}
+
+#§{
+    background-image :url(monster2.jpg);
+}
+
+#¤{
+    background-image : url(treasure.jpg);
 }
 
 .keypad_btn{
