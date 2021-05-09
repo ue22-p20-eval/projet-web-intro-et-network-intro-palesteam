@@ -24,7 +24,7 @@
                 {% for i in range(n_row) %}
                 <div style="height:18px">
                     {% for j in range(n_col) %}
-                    <span id="{{ 'cell {}-{}'.format(i,j) }}"> {{ mapdata[i][j] }} </span>
+                    <span id="{{ mapdata[i][j] }}"> {{ mapdata[i][j] }} </span>
                     {% endfor %}
                 </div>
                 {% endfor %}
