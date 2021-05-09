@@ -29,7 +29,7 @@ class Player:
         new_x = self._x + dx
         new_y = self._y + dy
 
-        if map[new_y][new_x] == "." or map[new_y][new_x] == "x" or map[new_y][new_x] == "¤" or map[new_y][new_x] == "§" :
+        if map[new_y][new_x] == "." or map[new_y][new_x] == "x" :
             ret =True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "x"
