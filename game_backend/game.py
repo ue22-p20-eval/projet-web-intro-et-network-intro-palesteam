@@ -10,7 +10,7 @@ class Game:
         self._map = self._generator.tiles_level
         
         
-        self._player = Player(symbol="P1")
+        self._player = Player(symbol="P")
         self._player.initPos( self._map )
 
     def getMap(self):

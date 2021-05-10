@@ -3,7 +3,6 @@ body{
 }
 
 .flexbox{
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,13 +16,39 @@ body{
     max-width:120px;
 }
 
+#console{
+    display : inline-grid;
+    line-height: 15px;
+    column-width: 15px;
+    grid-gap: 0px;
+    padding : 3px
+}
+
 #§{
     background-image :url(monster2.jpg);
 }
 
 #¤{
     background-image : url(treasure.jpg);
+    background-color: red;
 }
+
+#P{
+    background-image : url(player.png);
+}
+
+#°{
+    background-image: url(floor1.jpg);
+}
+
+#X{
+    background-image : url(floor2.jpg);
+}
+
+#W{
+    background-image : url(brick.jpg)
+}
+
 
 .keypad_btn{
     background-color: black;
