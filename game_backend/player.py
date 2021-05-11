@@ -3,6 +3,8 @@
 class Player:
     def __init__(self, symbol="@"):
         self._symbol = symbol
+        self.x_init = None
+        self.y_init = None
         self._x = None
         self._y = None
 
@@ -20,6 +22,8 @@ class Player:
                     found = True
                     break
 
+        self.x_init = x_init
+        self.y_init = y_init
         self._x = x_init
         self._y = y_init
 
@@ -29,13 +33,21 @@ class Player:
         new_x = self._x + dx
         new_y = self._y + dy
 
-        if map[new_y][new_x] == "°" or map[new_y][new_x] == "x" or map[new_y][new_x] == "¤" or map[new_y][new_x] == "§" :
+        if map[new_y][new_x] == "°" or map[new_y][new_x] == "x" or map[new_y][new_x] == "¤" :#or map[new_y][new_x] == "§" :
             ret =True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "x"
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"x"}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
             self._x = new_x
             self._y = new_y
+        elif map[new_y][new_x] == "§":
+            ret =True
+            map[new_y][new_x] = "D"
+            map[self._y][self._x] = "x"
+            map[self.y_init][self.x_init] = self._symbol
+            data = [{"i": f"{self.y_init}", "j":f"{self.x_init}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"D"}]
+            self._x = self.x_init
+            self._y = self.y_init
         else:
             ret = False
             data = []
