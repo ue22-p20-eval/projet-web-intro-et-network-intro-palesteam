@@ -24,32 +24,32 @@ body{
     padding : 3px
 }
 
-#§{
+.§{
     background-image :url(monster2.jpg);
 }
 
-#¤{
+.¤{
     background-image : url(treasure.jpg);
     background-color: red;
 }
 
-#P{
+.P{
     background-image : url(player.png);
 }
 
-#°{
+.°{
     background-image: url(floor1.jpg);
 }
 
-#X{
+.X{
     background-image : url(floor2.jpg);
 }
 
-#W{
+.W{
     background-image : url(brick.jpg)
 }
 
-#D{
+.D{
     background-image : url(dead.png);
 }
 

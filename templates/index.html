@@ -24,7 +24,9 @@
                 {% for i in range(n_row) %}
                 <div >
                     {% for j in range(n_col) %}
-                    <span id="{{ mapdata[i][j] }}"> _ </span>
+                    <span id="{{ 'cell {}-{}'.format(i,j) }}" class = "{{ mapdata[i][j] }}" >
+                    _
+                    </span>
                     {% endfor %}
                 </div>
                 {% endfor %}

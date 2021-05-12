@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 socket.emit("move", {dx:0, dy:1});
                 break;
         }
-    
+        
 
 
     };
@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btn_w.onclick = function(e) {
         console.log("Clicked on button w");
         socket.emit("move", {dx:-1, dy:0});
-    
+        
     };
     
 
@@ -61,8 +61,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.textContent = data[i].content;
+            
         }
+        
     });
     
-    window.location.reload();
+    
 });
