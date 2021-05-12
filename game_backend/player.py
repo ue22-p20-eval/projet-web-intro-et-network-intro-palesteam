@@ -45,7 +45,7 @@ class Player:
             map[new_y][new_x] = "D"
             map[self._y][self._x] = "x"
             map[self.y_init][self.x_init] = self._symbol
-            data = [{"i": f"{self.y_init}", "j":f"{self.x_init}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"D"}]
+            data = [{"i": f"{self.y_init}", "j":f"{self.x_init}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"D"}, {"i": f"{self._y}", "j":f"{self._x}", "content":"x"}]
             self._x = self.x_init
             self._y = self.y_init
         else:

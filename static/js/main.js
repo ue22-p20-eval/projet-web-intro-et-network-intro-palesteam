@@ -60,8 +60,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
         for( var i=0; i<2; i++){
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
             var span_to_modif = document.getElementById(cell_id);
-            span_to_modif.textContent = data[i].content;
-            
+            span_to_modif.className = data[i].content;
+            if (data[i].content == "D"){
+                var cell_id = "cell " + data[i+1].i + "-" + data[i+1].j;
+                var span_to_modif = document.getElementById(cell_id);
+                span_to_modif.className = data[i+1].content;
+            }
         }
         
     });
