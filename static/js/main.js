@@ -18,6 +18,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 socket.emit("move", {dx:0, dy:1});
                 break;
         }
+        window.location.reload();
 
 
     };
@@ -55,5 +56,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             span_to_modif.textContent = data[i].content;
         }
     });
+    
 
 });
