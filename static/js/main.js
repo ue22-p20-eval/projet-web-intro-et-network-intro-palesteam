@@ -18,6 +18,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 socket.emit("move", {dx:0, dy:1});
                 break;
         }
+        
 
 
     };
@@ -26,25 +27,32 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btn_n.onclick = function(e) {
         console.log("Clicked on button north");
         socket.emit("move", {dx:0, dy:-1});
+        
     };
-
+    
     var btn_s = document.getElementById("go_s");
     btn_s.onclick = function(e) {
         console.log("Clicked on button south");
         socket.emit("move", {dx:0, dy:1});
+        
     };
+
 
     var btn_w = document.getElementById("go_w");
     btn_w.onclick = function(e) {
         console.log("Clicked on button w");
         socket.emit("move", {dx:-1, dy:0});
+        
     };
+    
 
     var btn_e = document.getElementById("go_e");
     btn_e.onclick = function(e) {
         console.log("Clicked on button e");
         socket.emit("move", {dx:1, dy:0});
+        
     };
+    
 
 
     socket.on("response", function(data){
@@ -52,8 +60,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
         for( var i=0; i<2; i++){
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
             var span_to_modif = document.getElementById(cell_id);
-            span_to_modif.textContent = data[i].content;
+            span_to_modif.className = data[i].content;
+            if (data[i].content == "D"){
+                var cell_id = "cell " + data[i+1].i + "-" + data[i+1].j;
+                var span_to_modif = document.getElementById(cell_id);
+                span_to_modif.className = data[i+1].content;
+            }
         }
+        
     });
-
+    
+    
 });
