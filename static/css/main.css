@@ -53,6 +53,10 @@ body{
     background-image : url(dead.png);
 }
 
+.H{
+    background-image: url(floor1.jpg); 
+}
+
 
 .keypad_btn{
     background-color: black;

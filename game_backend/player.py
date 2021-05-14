@@ -43,7 +43,7 @@ class Player:
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == "§":
+        elif map[new_y][new_x] == "§" or map[new_y][new_x] == "H":
             if self.vie >= 1:
                 ret =True
                 map[new_y][new_x] = self._symbol
