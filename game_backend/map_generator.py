@@ -19,7 +19,9 @@ CHARACTER_TILES = {'stone': 'W',
 
                     'treasure' : '¤',
 
-                    'wall': 'W',}
+                    'wall': 'W',
+                    
+                    'hidden_monster': 'H'}
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -200,11 +202,13 @@ class Generator():
             for b in range(room[2]):
                 for c in range(room[3]):
                     #We randomly put monsters or treasures on the map
-                    k = random.randint(0,14)
+                    k = random.randint(0,21)
                     if k == 0 :
                         self.level[room[1] + c][room[0] + b] = 'monster'
                     elif k == 1 :
                         self.level[room[1] + c][room[0] + b] = 'treasure'
+                    elif k == 2 :
+                        self.level[room[1] + c][room[0] + b] = 'hidden_monster'
                     else :
                         self.level[room[1] + c][room[0] + b] = 'floor'
         # paint corridors
@@ -251,6 +255,8 @@ class Generator():
                     tmp_tiles.append(self.tiles['floor'])
                 if col == 'monster':
                     tmp_tiles.append(self.tiles['monster'])
+                if col == 'hidden_monster':
+                    tmp_tiles.append(self.tiles['hidden_monster'])
                 if col == 'treasure':
                     tmp_tiles.append(self.tiles['treasure'])
                 if col == 'wall':
