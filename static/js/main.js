@@ -52,22 +52,27 @@ window.addEventListener("DOMContentLoaded", (event) => {
         socket.emit("move", {dx:1, dy:0});
         
     };
+
+    var add_button = document.getElementById("add_player");
+    add_button.onclick = function(e) {
+        console.log("Clicked on add player");
+        socket.emit("add_player", {nb:1});
+    }
     
 
 
     socket.on("response", function(data){
         console.log(data);
-        for( var i=0; i<2; i++){
+        for( var i=0; i<data.length; i++){
+            
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.className = data[i].content;
-            if (data[i].content == "D"){
-                var cell_id = "cell " + data[i+1].i + "-" + data[i+1].j;
-                var span_to_modif = document.getElementById(cell_id);
-                span_to_modif.className = data[i+1].content;
-            }
         }
-        
+        //if (data.length == 1) {
+        //    var boutons_caches = document.getElementsByClassName("keypad_btn2_inv");
+        //   boutons_caches.style.visibility = "visible";
+        //}  
     });
     
     

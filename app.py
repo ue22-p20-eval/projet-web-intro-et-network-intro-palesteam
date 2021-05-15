@@ -22,6 +22,14 @@ def on_move_msg(json, methods=["GET", "POST"]):
     if ret:
         socketio.emit("response", data)
 
+@socketio.on("add_player") 
+def on_add_player_msg(json, methods=["GET","POST"]) :
+    print("adding player")
+    nb_player = json['nb']
+    data,ret = game.add_player()
+    if ret :
+        socketio.emit("response",data)
+
 
 if __name__=="__main__":
     socketio.run(app, port=5001)

@@ -56,6 +56,13 @@ body{
     background-image: url(floor1.jpg); 
 }
 
+.Q{
+    background-image: url(player2.png);
+}
+
+.keypad_btn2_inv{
+    visibility: hidden;
+}
 
 .keypad_btn{
     background-color: black;
