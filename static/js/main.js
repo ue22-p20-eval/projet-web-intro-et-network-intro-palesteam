@@ -57,7 +57,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     add_button.onclick = function(e) {
         console.log("Clicked on add player");
         socket.emit("add_player", {nb:1});
-    }
+    };
     
 
 
@@ -69,10 +69,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.className = data[i].content;
         }
-        //if (data.length == 1) {
-        //    var boutons_caches = document.getElementsByClassName("keypad_btn2_inv");
-        //   boutons_caches.style.visibility = "visible";
-        //}  
+    });
+
+    socket.on("response_adding", function(data){
+        console.log(data);
+        var boutons_caches = document.getElementById("thekeypad2");
+        boutons_caches.style.visibility = "visible";
+        var cell_id = "cell " + data[0].i + "-" + data[0].j;
+        var span_to_modif = document.getElementById(cell_id);
+        span_to_modif.className = data[0].content;
     });
     
     

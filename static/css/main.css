@@ -60,7 +60,7 @@ body{
     background-image: url(player2.png);
 }
 
-.keypad_btn2_inv{
+#thekeypad2{
     visibility: hidden;
 }
 

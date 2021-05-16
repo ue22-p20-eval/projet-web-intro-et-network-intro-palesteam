@@ -28,7 +28,7 @@ def on_add_player_msg(json, methods=["GET","POST"]) :
     nb_player = json['nb']
     data,ret = game.add_player()
     if ret :
-        socketio.emit("response",data)
+        socketio.emit("response_adding",data)
 
 
 if __name__=="__main__":
