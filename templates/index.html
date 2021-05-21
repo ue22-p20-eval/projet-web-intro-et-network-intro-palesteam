@@ -6,19 +6,11 @@
     </head>
     <body>
         <div> <b> Rogue Flask </b></div>
+ 
         <div class="Add"> <input id="add_player" class="add_button" type="button" value="Ajouter un second joueur"> </div>
+        <div id="Msg_adding" style="visibility : hidden"> To move the second player, use the following keys :  z (up), q (left), s (down), d (right)</div>
+
         <div class="flexbox">
-            <div class="thekeypad" >
-                <div class="key"></div>
-                <div class="key"><input id="go_n" class="keypad_btn" type="button" value="&#9650"> </div>
-                <div class="key"></div>
-                <div class="key"><input id="go_w" class="keypad_btn" type="button" value="&#9664"></div>
-                <div class="key"></div>
-                <div class="key"><input id="go_e" class="keypad_btn" type="button" value="&#9654"></div>
-                <div class="key"></div>
-                <div class="key"><input id="go_s" class="keypad_btn" type="button" value="&#9660"></div>
-                <div class="key"></div>
-            </div>
 
             <div id="thekeypad2" >
                 <div class="key"></div>
@@ -43,6 +35,19 @@
                 </div>
                 {% endfor %}
             </div>
+
+            <div class="thekeypad" >
+                <div class="key"></div>
+                <div class="key"><input id="go_n" class="keypad_btn" type="button" value="&#9650"> </div>
+                <div class="key"></div>
+                <div class="key"><input id="go_w" class="keypad_btn" type="button" value="&#9664"></div>
+                <div class="key"></div>
+                <div class="key"><input id="go_e" class="keypad_btn" type="button" value="&#9654"></div>
+                <div class="key"></div>
+                <div class="key"><input id="go_s" class="keypad_btn" type="button" value="&#9660"></div>
+                <div class="key"></div>
+            </div>
+
         </div>
 
     </body>

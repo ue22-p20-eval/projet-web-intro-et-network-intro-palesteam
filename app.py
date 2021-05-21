@@ -12,15 +12,25 @@ def index():
     map = game.getMap()
     return render_template("index.html", mapdata=map, n_row=len(map), n_col=len(map[0]) )
 
-@socketio.on("move")
+@socketio.on("move1")
 def on_move_msg(json, methods=["GET", "POST"]):
-    print("received move ws message")
+    print("received move1 ws message")
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret = game.move(dx,dy)
+    data, ret = game.move(dx,dy,0)
     if ret:
-        socketio.emit("response", data)
+        socketio.emit("response_move1", data)
+
+@socketio.on("move2")
+def on_move_msg(json, methods=["GET", "POST"]):
+    print("received move2 ws message")
+    dx = json['dx']
+    dy = json["dy"]
+
+    data, ret = game.move(dx,dy,1)
+    if ret:
+        socketio.emit("response_move2", data)
 
 @socketio.on("add_player") 
 def on_add_player_msg(json, methods=["GET","POST"]) :

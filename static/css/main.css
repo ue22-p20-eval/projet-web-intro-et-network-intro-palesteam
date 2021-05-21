@@ -1,5 +1,5 @@
 body{
-    background-image : lavender;
+    background-color : lightgray;
 }
 
 .flexbox{
@@ -14,6 +14,35 @@ body{
     grid-auto-rows: 35px;
     grid-gap: 5px;
     max-width:120px;
+}
+
+.keypad_btn{
+    background-color: white ;
+    opacity: 0.75 ;
+    color : red ;
+}
+
+#thekeypad2{
+    visibility: hidden;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 35px;
+    grid-gap: 5px;
+    max-width:120px;
+}
+
+.keypad_btn2_inv {
+    background-color: black;
+    opacity: 0.75;
+    color: cyan;
+}
+
+.Add{
+    margin-top: 5px;
+}
+
+#Msg_adding{
+    margin-bottom: 10px;
 }
 
 #console{
@@ -60,12 +89,5 @@ body{
     background-image: url(player2.png);
 }
 
-#thekeypad2{
-    visibility: hidden;
-}
 
-.keypad_btn{
-    background-color: black;
-    opacity: 0.75;
-    color: cyan;
-}
+
