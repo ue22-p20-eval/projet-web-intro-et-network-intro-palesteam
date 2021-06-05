@@ -1,7 +1,7 @@
 
 
 class Player:
-    def __init__(self, symbol="@", vie=0):
+    def __init__(self, symbol="@", vie=1):
         self._symbol = symbol
         self.x_init = None
         self.y_init = None
@@ -30,10 +30,10 @@ class Player:
 
         _map[self._y][self._x] = self._symbol
 
-    def move(self, dx, dy, map):
+    def move(self, dx, dy, map, list_player):
         new_x = self._x + dx
         new_y = self._y + dy
-        if map[new_y][new_x] == "°" or map[new_y][new_x] == "x" or map[new_y][new_x] == "¤" :
+        if map[new_y][new_x] == "°" or map[new_y][new_x] == "x" or map[new_y][new_x] == "¤" or map[new_y][new_x] == "D" :
             if map[new_y][new_x] == "¤" :
                 self.vie += 1
             ret =True
@@ -43,8 +43,9 @@ class Player:
             self._x = new_x
             self._y = new_y
 
+        #if the player walks on a monster
         elif map[new_y][new_x] == "§" or map[new_y][new_x] == "H":
-            if self.vie >= 1:
+            if self.vie > 1:
                 ret =True
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "x"
@@ -60,7 +61,33 @@ class Player:
                 data = [{"i": f"{self.y_init}", "j":f"{self.x_init}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"D"}, {"i": f"{self._y}", "j":f"{self._x}", "content":"x"}]
                 self._x = self.x_init
                 self._y = self.y_init
+
+        #if the player tries to walk (attacks) another player
+        elif map[new_y][new_x] in [e._symbol for e in list_player] :
+            ret = False
+            data = []
+            for i in range(len(list_player)) :
+                if map[new_y][new_x] == list_player[i]._symbol :
+                    data, ret = list_player[i].hit(map)
+                
         else:
             ret = False
             data = []
-        return data, ret
+
+        return data, ret, [e.vie for e in list_player]
+
+    #when a player is hit by another player
+    def hit(self, map) :
+        if self.vie > 1 :
+            self.vie -= 1
+            ret = True
+            data = []
+        else : 
+            ret = True
+            map[self._y][self._x] = "D"
+            map[self.y_init][self.x_init] = self._symbol
+            data = [{"i": f"{self.y_init}", "j":f"{self.x_init}", "content":self._symbol}, {"i": f"{self._y}", "j":f"{self._x}", "content":"D"}]
+            self._x = self.x_init
+            self._y = self.y_init
+
+        return data,ret

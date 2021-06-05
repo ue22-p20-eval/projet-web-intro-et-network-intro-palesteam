@@ -18,9 +18,9 @@ def on_move_msg(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret = game.move(dx,dy,0)
+    data, ret, lifes = game.move(dx,dy,0)
     if ret:
-        socketio.emit("response_move1", data)
+        socketio.emit("response_move1", [data, lifes])
 
 @socketio.on("move2")
 def on_move_msg(json, methods=["GET", "POST"]):
@@ -28,17 +28,18 @@ def on_move_msg(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret = game.move(dx,dy,1)
+    data, ret, lifes = game.move(dx,dy,1)
     if ret:
-        socketio.emit("response_move2", data)
+        socketio.emit("response_move2", [data, lifes])
 
+#adding a player
 @socketio.on("add_player") 
 def on_add_player_msg(json, methods=["GET","POST"]) :
     print("adding player")
     nb_player = json['nb']
-    data,ret = game.add_player()
+    data,ret, lifes = game.add_player()
     if ret :
-        socketio.emit("response_adding",data)
+        socketio.emit("response_adding", [data, lifes])
 
 
 if __name__=="__main__":

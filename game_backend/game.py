@@ -11,6 +11,7 @@ class Game:
         
         
         self._player = [Player(symbol="P")]
+
         self._player[0].initPos( self._map )
         self.nb_player = 1
 
@@ -19,10 +20,11 @@ class Game:
 
     def move(self, dx, dy, nb_player):
         if len(self._player) > nb_player :
-            return self._player[nb_player].move(dx, dy, self._map)
+            return self._player[nb_player].move(dx, dy, self._map, self._player)
         else : 
             return [], False
 
+    #adding a player when the button is clicked
     def add_player(self):
         ret = False
         if self.nb_player == 1 :
@@ -30,5 +32,5 @@ class Game:
             self.nb_player+=1
             self._player.append(Player(symbol = "Q"))
             self._player[1].initPos(self._map)
-            return [{"i": f"{self._player[1]._y}", "j":f"{self._player[1]._x}", "content":self._player[1]._symbol}],ret
-        return [], ret
+            return [{"i": f"{self._player[1]._y}", "j":f"{self._player[1]._x}", "content":self._player[1]._symbol}],ret, [e.vie for e in self._player]
+        return [], ret, [e.vie for e in self._player]

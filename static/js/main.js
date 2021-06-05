@@ -111,37 +111,77 @@ window.addEventListener("DOMContentLoaded", (event) => {
     
 
 
-    socket.on("response_move1", function(data){
-        console.log(data);
+    socket.on("response_move1", function(DATA){
+        console.log(DATA);
+        data = DATA[0];
+        lifes = DATA[1];
         for( var i=0; i<data.length; i++){
             
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.className = data[i].content;
         }
+        for ( var j=0; j<lifes.length; j++){
+            var life = document.getElementById("life" + (j+1).toString());
+            life.innerHTML = "Vies Joueur" +(j+1).toString() + " : " + lifes[j].toString();
+            if (j==1){
+                life.style.visibility = "visible";
+            }
+        }
+       
     });
 
-    socket.on("response_move2", function(data){
-        console.log(data);
+    socket.on("response_move2", function(DATA){
+        console.log(DATA);
+        data = DATA[0];
+        lifes = DATA[1];
+
         for( var i=0; i<data.length; i++){
             
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.className = data[i].content;
         }
-    });
-
-    socket.on("response_adding", function(data){
-        console.log(data);
         var boutons_caches = document.getElementById("thekeypad2");
         boutons_caches.style.visibility = "visible";
         var bouton_a_cacher = document.getElementById("add_player") ;
         bouton_a_cacher.style.visibility = "hidden";
         var texte_a_montrer = document.getElementById("Msg_adding") ;
         texte_a_montrer.style.visibility = "visible" ;
+        
+        for ( var j=0; j<lifes.length; j++){
+            var life = document.getElementById("life" + (j+1).toString());
+            life.innerHTML = "Vies Joueur" +(j+1).toString() + " : " + lifes[j].toString();
+            if (j==1){
+                life.style.visibility = "visible";
+            }
+        }
+
+    });
+
+    socket.on("response_adding", function(DATA){
+        console.log(DATA);
+        data = DATA[0];
+        lifes = DATA[1];
+
         var cell_id = "cell " + data[0].i + "-" + data[0].j;
         var span_to_modif = document.getElementById(cell_id);
         span_to_modif.className = data[0].content;
+
+        var boutons_caches = document.getElementById("thekeypad2");
+        boutons_caches.style.visibility = "visible";
+        var bouton_a_cacher = document.getElementById("add_player") ;
+        bouton_a_cacher.style.visibility = "hidden";
+        var texte_a_montrer = document.getElementById("Msg_adding") ;
+        texte_a_montrer.style.visibility = "visible" ;
+
+        for ( var j=0; j<lifes.length; j++){
+            var life = document.getElementById("life" + (j+1).toString());
+            life.innerHTML = "Vies Joueur" +(j+1).toString() + " : " + lifes[j].toString();
+            if (j==1){
+                life.style.visibility = "visible";
+            }
+        }
     });
     
     
