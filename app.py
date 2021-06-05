@@ -21,7 +21,8 @@ def on_move_msg(json, methods=["GET", "POST"]):
     data, ret, lifes = game.move(dx,dy,0)
     if ret:
         socketio.emit("response_move1", [data, lifes])
-
+        
+#if the player 2 moves
 @socketio.on("move2")
 def on_move_msg(json, methods=["GET", "POST"]):
     print("received move2 ws message")

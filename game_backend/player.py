@@ -1,5 +1,3 @@
-
-
 class Player:
     def __init__(self, symbol="@", vie=1):
         self._symbol = symbol
