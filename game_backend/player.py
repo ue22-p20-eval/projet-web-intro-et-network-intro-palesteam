@@ -67,7 +67,10 @@ class Player:
             for i in range(len(list_player)) :
                 if map[new_y][new_x] == list_player[i]._symbol :
                     data, ret = list_player[i].hit(map)
-                
+        #if the player walks on the stairs :
+        elif map[new_y][new_x] == 'S' :
+            ret = True
+            data = True
         else:
             ret = False
             data = []

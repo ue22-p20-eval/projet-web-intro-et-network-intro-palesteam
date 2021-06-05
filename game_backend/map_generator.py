@@ -11,6 +11,7 @@
 from __future__ import print_function
 import random
 
+
 CHARACTER_TILES = {'stone': 'W',
 
                     'floor': '°',
@@ -21,7 +22,9 @@ CHARACTER_TILES = {'stone': 'W',
 
                     'wall': 'W',
                     
-                    'hidden_monster': 'H'}
+                    'hidden_monster': 'H',
+                    
+                    'stairs' : 'S'}
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -198,6 +201,7 @@ class Generator():
             self.join_rooms(room_1, room_2)
         # fill the map
         # paint rooms
+        stairs = False
         for room_num, room in enumerate(self.room_list):
             for b in range(room[2]):
                 for c in range(room[3]):
@@ -209,8 +213,12 @@ class Generator():
                         self.level[room[1] + c][room[0] + b] = 'treasure'
                     elif k == 2 :
                         self.level[room[1] + c][room[0] + b] = 'hidden_monster'
+
                     else :
                         self.level[room[1] + c][room[0] + b] = 'floor'
+
+
+
         # paint corridors
         for corridor in self.corridor_list:
             x1, y1 = corridor[0]
@@ -261,7 +269,21 @@ class Generator():
                     tmp_tiles.append(self.tiles['treasure'])
                 if col == 'wall':
                     tmp_tiles.append(self.tiles['wall'])
+                if col == 'stairs' :
+                    tmp_tiles.append(self.tiles['stairs'])
+        
             self.tiles_level.append(tmp_tiles)
+
+        #Adding the stairs    
+        stairs = False
+        while not stairs :
+            y = random.randint(5,30)
+            x = random.randint(5,60)
+            if self.tiles_level[y][x] == '°' :
+                self.tiles_level[y][x] = self.tiles['stairs']
+                stairs = True
+                break
+
         #print('Room List: ', self.room_list)
         #print('\nCorridor List: ', self.corridor_list)
         #[print(row) for row in self.tiles_level]
